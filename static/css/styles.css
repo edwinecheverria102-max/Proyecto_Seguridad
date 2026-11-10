@@ -434,3 +434,85 @@ nav ul li a:hover, nav ul li a.active {
     font-weight: bold;
     text-decoration: underline;
 }
+
+/* =========================================
+   FOOTER (PIE DE PÁGINA)
+   ========================================= */
+.site-footer {
+    background-color: #111; /* Fondo oscuro elegante */
+    color: #ccc;
+    padding: 60px 5% 20px;
+    font-size: 14px;
+    margin-top: 60px; /* Separación del contenido principal */
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-col h4 {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+    color: #fff; /* Se ilumina al pasar el mouse */
+}
+
+.footer-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.footer-desc {
+    line-height: 1.6;
+    color: #999;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    color: #777;
+    font-size: 12px;
+}
+
+/* Adaptación para móviles */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
