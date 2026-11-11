@@ -10,8 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
+from ntpath import join
 from pathlib import Path
-
+import os 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -31,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin', 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,7 +40,28 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+
 ]
+
+# ==========================================
+# CONFIGURACIÓN DE JAZZMIN (PANEL DE ADMIN)
+# ==========================================
+JAZZMIN_SETTINGS = {
+    # Título de la ventana del navegador
+    "site_title": "BookOne Admin",
+    
+    # Título que aparece en la parte superior del menú lateral
+    "site_header": "BookOne",
+    
+    # Título en la página de inicio de sesión
+    "site_brand": "BookOne Panel",
+    
+    # Texto de copyright en el pie de página
+    "copyright": "BookOne E-commerce",
+    
+    # Color de la barra superior (puedes usar clases de Bootstrap como "primary", "success", "danger", "info", "dark")
+    "theme": "dark", 
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -55,7 +78,7 @@ ROOT_URLCONF = 'plataforma.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -115,7 +138,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
+#configuracion de estaticos
 STATIC_URL = 'static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
 # Email

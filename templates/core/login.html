@@ -1,0 +1,38 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Iniciar Sesión | BookOne{% endblock  %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <h2>Iniciar Sesión</h2>
+
+        <!-- envio de datos a la misma URL-->
+        <form method="POST" action="">
+            {% csrf_token %} <!--seguridad en django-->
+
+            <div class="form-group">
+                <label for="id_username">Correo electrónico</label>
+                <!--login - username -->
+                <input type="email" name="username" id="id_username" placeholder="tu@correo.com" required>
+            </div>
+
+            <div class="form-group"> 
+                <label for="id_password">Contraseña</label>
+                <input type="password" name="password" id="id_password" placeholder="••••••••" required>
+            </div>
+
+            <button type="submit" class="btn-submit">Ingresar</button>
+        </form>
+
+        <div class="auth-links">
+            <!--href="#" hasta que backend configure la ruta-->
+            <p><a href="#">¿Olvidaste tu contraseña?</a></p>
+            <p>¿No tienes cuenta <a href="/register/">Regístrate aquí</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

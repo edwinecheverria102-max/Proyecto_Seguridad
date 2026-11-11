@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Crear Cuenta | BookOne{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <h2>Crear Cuenta</h2>
+        
+        <form method="POST" action="">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="id_name">Nombre completo</label>
+                <input type="text" name="name" id="id_name" placeholder="Tu nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="id_email">Correo electrónico</label>
+                <input type="email" name="email" id="id_email" placeholder="tu@correo.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="id_password1">Contraseña</label>
+                <input type="password" name="password1" id="id_password1" placeholder="••••••••" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="id_password2">Confirmar contraseña</label>
+                <input type="password" name="password2" id="id_password2" placeholder="••••••••" required>
+            </div>
+            
+            <button type="submit" class="btn-submit">Registrarse</button>
+        </form>
+
+        <div class="auth-links">
+            <p>¿Ya tienes cuenta? <a href="/login/">Inicia sesión aquí</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

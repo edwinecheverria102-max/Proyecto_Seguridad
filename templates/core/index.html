@@ -1,0 +1,99 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+<!-- 1. Cambias el título de la pestaña -->
+{% block title %}Inicio | BookOne{% endblock %}
+
+<!-- 2. Aquí va todo el contenido de tu landing page -->
+{% block content %}
+
+    <!-- HERO SECTION (Tu código de antes) -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-subtitle">Tu Biblioteca Digital</span>
+            <h1 class="hero-title">Descubre tu próxima<br>lectura digital</h1>
+            <p class="hero-text">
+                Explora nuestra colección de ebooks, manuales técnicos, guías y apuntes. 
+                Todo el conocimiento que necesitas, al alcance de un clic y en formato digital.
+            </p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary">Explorar Catálogo</a>
+                <a href="#" class="btn btn-secondary">Saber Más</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="{% static 'img/referencia.jpg' %}" alt="Ebook en tablet">
+        </div>
+    </section>
+
+        <!-- SECCIÓN DE CATEGORÍAS (FILA DE 4) -->
+    <section class="features">
+        <div class="feature-card">
+            <!-- Recuerda guardar tus imágenes en static/img/ -->
+            <img src="{% static 'img/manual-tecnico.jpg' %}" alt="Manuales">
+            <h3>Manuales Técnicos</h3>
+            <a href="#">Ver todo</a>
+        </div>
+        <div class="feature-card">
+            <img src="{% static 'img/ebook.jpg' %}" alt="Ebooks">
+            <h3>Ebooks y Libros</h3>
+            <a href="#">Ver todo</a>
+        </div>
+        <div class="feature-card">
+            <img src="{% static 'img/apuntes.jpg' %}" alt="Apuntes">
+            <h3>Apuntes y Guías</h3>
+            <a href="#">Ver todo</a>
+        </div>
+        <div class="feature-card">
+            <img src="{% static 'img/material-edu.jpg' %}" alt="Material Educativo">
+            <h3>Material Educativo</h3>
+            <a href="#">Ver todo</a>
+        </div>
+    </section>
+
+    <section class="latest-collection">
+        <h2>Últimos Lanzamientos</h2>
+        <div class="product-grid">
+            <!-- Producto 1 -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="{% static 'img/redes-info.jpg' %}" alt="Portada Libro">
+                </div>
+                <h3 class="product-title">Redes Informaticas</h3>
+                <p class="product-price">$200 MXM</p>
+                <p class="product-format">Formato PDF / EPUB</p>
+            </div>
+            
+            <!-- Producto 2 -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="{% static 'img/fudamentos-py.jpg' %}" alt="Portada Libro">
+                </div>
+                <h3 class="product-title">Fundamentals of Python : Data Structures</h3>
+                <p class="product-price">$450 MXM</p>
+                <p class="product-format">Formato PDF</p>
+            </div>
+
+            <!-- Producto 3 -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="{% static 'img/apuntes-info.jpg' %}" alt="Portada Libro">
+                </div>
+                <h3 class="product-title">Apuntes de Informatica</h3>
+                <p class="product-price">$100.00 MXM</p>
+                <p class="product-format">Formato PDF </p>
+            </div>
+
+            <!-- Producto 4 -->
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="{% static 'img/arq-soft.jpg' %}" alt="Portada Libro">
+                </div>
+                <h3 class="product-title">Introducción a la Arquitectura de Software un Enfoque Práctico</h3>
+                <p class="product-price">$500.00 MXM</p>
+                <p class="product-format">Formato EPUB</p>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

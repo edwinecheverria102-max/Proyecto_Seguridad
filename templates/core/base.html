@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Bloque para el título dinámico de cada página -->
+    <title>{% block title %}BookOne | Ebooks{% endblock %}</title>
+    
+    <!-- Tu CSS global -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+    <!-- ==========================================
+         HEADER GLOBAL
+         ========================================== -->
+    <header>
+        <div class="logo">
+            <a href="/">BOOKONE</a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="#">Catálogo</a></li>
+                <li><a href="#">Categorías</a></li>
+                <li><a href="#">Acerca de</a></li>
+            </ul>
+        </nav>
+
+        <div class="nav-icons">
+            <!-- Icono de búsqueda (siempre visible) -->
+            <span><img src="{% static 'icons/busqueda.svg' %}" class="icon" alt="Buscar"></span>
+            
+            <!-- Lógica de Django: Si el usuario está logueado -->
+            {% if user.is_authenticated %}
+                <span><img src="{% static 'icons/usuario.svg' %}" class="icon" alt="Usuario"></span>
+                <span><img src="{% static 'icons/carrito-de-compras.svg' %}" class="icon" alt="Carrito"></span>
+                <a href="#" class="btn-logout">Salir</a>
+            {% else %}
+                <!-- Si no está logueado: Mostrar Login/Registro -->
+                <a href="#" class="nav-link">Ingresar</a>
+                <a href="/" class="btn-primary" style="padding: 5px 15px;">Registrarse</a>
+            {% endif %}
+        </div>
+    </header>
+
+    <!-- ==========================================
+         CONTENIDO DINÁMICO (Aquí irá el index, carrito, etc.)
+         ========================================== -->
+    <main>
+        {% block content %}
+        <!-- El contenido de cada página se inyectará aquí -->
+        {% endblock %}
+    </main>
+
+    <!-- ==========================================
+         FOOTER GLOBAL
+    ========================================== -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            
+            <!-- Columna 1: Logo y descripción -->
+            <div class="footer-col">
+                <div class="footer-logo">BookOne</div>
+                <p class="footer-desc">
+                    Tu biblioteca digital de confianza. Encuentra ebooks, manuales técnicos y material educativo para llevar tu conocimiento al siguiente nivel.
+                </p>
+            </div>
+
+            <!-- Columna 2: Enlaces rápidos -->
+            <div class="footer-col">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="#">Catálogo</a></li>
+                    <li><a href="#">Categorías</a></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 3: Ayuda / Legal -->
+            <div class="footer-col">
+                <h4>Ayuda</h4>
+                <ul>
+                    <li><a href="#">Preguntas Frecuentes</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Aviso de Privacidad</a></li>
+                    <li><a href="#">Política de Reembolsos</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 4: Contacto -->
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <ul>
+                    <li>soporte@bookone.com</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Línea inferior de Copyright -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 BookOne. Plataforma segura de venta y distribución de contenido digital. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Tu JavaScript global -->
+    <script src="{% static 'app.js' %}"></script>
+    
+    <!-- Bloque para JS extra (por si una página específica necesita scripts únicos) -->
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

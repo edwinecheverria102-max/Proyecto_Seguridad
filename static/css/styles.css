@@ -1,0 +1,518 @@
+/* =========================================
+    RESET Y ESTILOS GLOBALES
+========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* =========================================
+    HEADER / NAVBAR
+========================================= */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav ul li a {
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #555;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: #000;
+}
+
+.nav-icons {
+    display: flex;
+    align-items: center; 
+    gap: 15px;           
+}
+
+
+.nav-icons img.icon {
+    width: 22px;         
+    height: 22px;
+    object-fit: contain; 
+    cursor: pointer;     
+    transition: transform 0.2s;
+}
+
+.nav-icons img.icon:hover {
+    transform: scale(1.1); 
+}
+
+/* =========================================
+    HERO SECTION
+========================================= */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 5%;
+    background-color: #f4f4f4;
+    min-height: 500px;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 500px;
+}
+
+.hero-subtitle {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.hero-title {
+    font-size: 48px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-text {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    padding: 12px 25px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background-color: #000;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #333;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #000;
+    border-color: #000;
+}
+
+.btn-secondary:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* =========================================
+    CATEGORÍAS / FEATURES (Fila de 4)
+========================================= */
+.features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 60px 5%;
+    background-color: #fff;
+}
+
+.feature-card {
+    text-align: center;
+    padding: 20px;
+    background-color: #fafafa;
+    transition: transform 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.feature-card a {
+    font-size: 12px;
+    color: #888;
+    text-decoration: underline;
+}
+
+/* =========================================
+    ÚLTIMA COLECCIÓN / PRODUCTOS
+========================================= */
+.latest-collection {
+    padding: 60px 5%;
+    background-color: #fafafa;
+    text-align: center;
+}
+
+.latest-collection h2 {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 40px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.product-card {
+    background: #fff;
+    padding-bottom: 20px;
+    transition: box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.product-card:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+
+.product-image-container {
+    width: 100%;          
+    height: 250px;        
+    background-color: #f0f0f0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;     
+    padding: 20px;        
+}
+
+
+.product-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;  
+    transition: transform 0.3s; 
+}
+
+.product-card img {
+    max-width: 100px;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.product-card:hover img {
+    transform: scale(1.05);
+}
+
+.product-title {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    padding: 0 10px;
+}
+
+.product-price {
+    font-size: 14px;
+    color: #000;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+        
+.product-format {
+    font-size: 12px;
+    color: #888;
+}
+
+
+
+/* =========================================
+   ESTILOS PARA EL TOAST (Notificaciones)
+========================================= */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #000;
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 4px;
+    z-index: 1000;
+    font-size: 14px;
+    
+    /* Efecto de oculto por defecto */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px); /* Empieza un poco más abajo */
+    transition: all 0.3s ease;
+}
+
+/* Clase que activaremos con JS para mostrarlo */
+.toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0); /* Sube a su posición original */
+}
+
+/* =========================================
+    RESPONSIVE DESIGN
+========================================= */
+@media (max-width: 900px) {
+    .features, .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 5%;
+    }
+    .hero-content {
+        margin-bottom: 40px;
+    }
+    .hero-buttons {
+        justify-content: center;
+    }
+    nav ul {
+        display: none; /* Ocultar menú en móviles por simplicidad */
+    }
+}
+
+@media (max-width: 600px) {
+    .features, .product-grid {
+        grid-template-columns: 1fr;
+    }
+    .hero-title {
+        font-size: 32px;
+    }                
+}
+/* =========================================
+   FORMULARIOS DE AUTENTICACIÓN (LOGIN Y REGISTRO)
+   ========================================= */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh; 
+    background-color: #fafafa;
+    padding: 40px 20px;
+}
+
+.auth-card {
+    background-color: #ffffff;
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    border-radius: 8px;
+}
+
+.auth-card h2 {
+    text-align: center;
+    font-weight: 300;
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #000;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #000;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 14px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background-color: #333;
+}
+
+.auth-links {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+.auth-links p {
+    margin-bottom: 10px;
+}
+
+.auth-links a {
+    color: #000;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* =========================================
+   FOOTER (PIE DE PÁGINA)
+   ========================================= */
+.site-footer {
+    background-color: #111; /* Fondo oscuro elegante */
+    color: #ccc;
+    padding: 60px 5% 20px;
+    font-size: 14px;
+    margin-top: 60px; /* Separación del contenido principal */
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-col h4 {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+    color: #fff; /* Se ilumina al pasar el mouse */
+}
+
+.footer-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.footer-desc {
+    line-height: 1.6;
+    color: #999;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    color: #777;
+    font-size: 12px;
+}
+
+/* Adaptación para móviles */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
