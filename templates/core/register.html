@@ -8,7 +8,7 @@
     <div class="auth-card">
         <h2>Crear Cuenta</h2>
         
-        <form method="POST" action="">
+        <form method="POST" action="{% url 'core:register' %}">
             {% csrf_token %}
             
             <div class="form-group">
@@ -35,7 +35,7 @@
         </form>
 
         <div class="auth-links">
-            <p>¿Ya tienes cuenta? <a href="/login/">Inicia sesión aquí</a></p>
+            <p>¿Ya tienes cuenta? <a href="{% url 'core:login' %}">Inicia sesión aquí</a></p>
         </div>
     </div>
 </div>

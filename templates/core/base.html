@@ -38,11 +38,11 @@
             {% if user.is_authenticated %}
                 <span><img src="{% static 'icons/usuario.svg' %}" class="icon" alt="Usuario"></span>
                 <span><img src="{% static 'icons/carrito-de-compras.svg' %}" class="icon" alt="Carrito"></span>
-                <a href="#" class="btn-logout">Salir</a>
+                <a href="{% url 'core:logout' %}" class="btn-logout">Salir</a>
             {% else %}
                 <!-- Si no está logueado: Mostrar Login/Registro -->
-                <a href="#" class="nav-link">Ingresar</a>
-                <a href="/" class="btn-primary" style="padding: 5px 15px;">Registrarse</a>
+                <a href="{% url 'core:login' %}" class="nav-link">Ingresar</a>
+                <a href="{% url 'core:register' %}" class="btn-primary" style="padding: 5px 15px;">Registrarse</a>
             {% endif %}
         </div>
     </header>

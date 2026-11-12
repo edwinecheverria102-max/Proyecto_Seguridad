@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password, check_password
+from django.contrib.auth import get_user_model, login, logout
 from django.db import IntegrityError
 from .models import Usuario
+
+User = get_user_model()
 
 def index(request):
     return render(request, 'core/index.html')
@@ -9,22 +12,34 @@ def index(request):
 # creado para la visualizacion del diseño login/register
 def login_view(request):
     if request.method == "POST":
-        email = request.POST.get("email")
+        email = request.POST.get("email") or request.POST.get("username")
         password = request.POST.get("password")
 
         if not email or not password:
             return render(request, "core/login.html", {"error": "Completa todos los campos."})
 
-        usuario = Usuario.objects.filter(email=email).first()
+        auth_user = User.objects.filter(email__iexact=email).first()
+        if auth_user and auth_user.check_password(password):
+            login(request, auth_user)
+            request.session["user_id"] = auth_user.id
+            request.session["user_name"] = auth_user.get_full_name() or auth_user.username
+            return redirect("core:index")
 
+        usuario = Usuario.objects.filter(email__iexact=email).first()
         if usuario and check_password(password, usuario.password_hash):
             request.session["user_id"] = usuario.id
             request.session["user_name"] = usuario.nombre
-            return redirect("core:index")  # requiere que en urls tengas name="index"
+            return redirect("core:index")
 
         return render(request, "core/login.html", {"error": "Correo o contraseña incorrectos."})
 
     return render(request, "core/login.html")
+
+def logout_view(request):
+    logout(request)
+    request.session.flush()
+    return redirect("core:index")
+
 
 def register_view(request):
     if request.method == "POST":
