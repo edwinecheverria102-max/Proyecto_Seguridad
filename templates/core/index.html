@@ -1,13 +1,17 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
-<!-- 1. Cambias el título de la pestaña -->
+<!-- título de la pestaña -->
 {% block title %}Inicio | BookOne{% endblock %}
 
-<!-- 2. Aquí va todo el contenido de tu landing page -->
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+<!-- landing page -->
 {% block content %}
 
-    <!-- HERO SECTION (Tu código de antes) -->
+    <!-- HERO SECTION  -->
     <section class="hero">
         <div class="hero-content">
             <span class="hero-subtitle">Tu Biblioteca Digital</span>
@@ -29,7 +33,6 @@
         <!-- SECCIÓN DE CATEGORÍAS (FILA DE 4) -->
     <section class="features">
         <div class="feature-card">
-            <!-- Recuerda guardar tus imágenes en static/img/ -->
             <img src="{% static 'img/manual-tecnico.jpg' %}" alt="Manuales">
             <h3>Manuales Técnicos</h3>
             <a href="#">Ver todo</a>
@@ -65,14 +68,17 @@
             </div>
             
             <!-- Producto 2 -->
-            <div class="product-card">
-                <div class="product-image-container">
-                    <img src="{% static 'img/fudamentos-py.jpg' %}" alt="Portada Libro">
+            <a href="/product-detail/" styles="text-decoration": none; color: inherit;>
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="{% static 'img/fundamentos-py.jpg' %}" alt="Portada Libro">
+                    </div>
+                    <h3 class="product-title">Fundamentals of Python : Data Structures</h3>
+                    <p class="product-price">$450 MXM</p>
+                    <p class="product-format">Formato PDF</p>
                 </div>
-                <h3 class="product-title">Fundamentals of Python : Data Structures</h3>
-                <p class="product-price">$450 MXM</p>
-                <p class="product-format">Formato PDF</p>
-            </div>
+            </a>
+        
 
             <!-- Producto 3 -->
             <div class="product-card">

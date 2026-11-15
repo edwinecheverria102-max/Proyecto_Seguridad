@@ -8,14 +8,15 @@
     <!-- Bloque para el título dinámico de cada página -->
     <title>{% block title %}BookOne | Ebooks{% endblock %}</title>
     
-    <!-- Tu CSS global -->
+    <!--  CSS global -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    
+    {% block extra_css %}{% endblock %}
+
 </head>
 <body>
 
-    <!-- ==========================================
-         HEADER GLOBAL
-         ========================================== -->
+    <!-- HEADER GLOBAL-->
     <header>
         <div class="logo">
             <a href="/">BOOKONE</a>
@@ -31,34 +32,30 @@
         </nav>
 
         <div class="nav-icons">
-            <!-- Icono de búsqueda (siempre visible) -->
+            <!-- icono de busqueda -->
             <span><img src="{% static 'icons/busqueda.svg' %}" class="icon" alt="Buscar"></span>
             
-            <!-- Lógica de Django: Si el usuario está logueado -->
+            <!-- logica de django, Si el usuario esta logueado -->
             {% if user.is_authenticated %}
                 <span><img src="{% static 'icons/usuario.svg' %}" class="icon" alt="Usuario"></span>
                 <span><img src="{% static 'icons/carrito-de-compras.svg' %}" class="icon" alt="Carrito"></span>
                 <a href="{% url 'core:logout' %}" class="btn-logout">Salir</a>
             {% else %}
-                <!-- Si no está logueado: Mostrar Login/Registro -->
+                <!-- Si no, Mostrar Login/Registro -->
                 <a href="{% url 'core:login' %}" class="nav-link">Ingresar</a>
                 <a href="{% url 'core:register' %}" class="btn-primary" style="padding: 5px 15px;">Registrarse</a>
             {% endif %}
         </div>
     </header>
 
-    <!-- ==========================================
-         CONTENIDO DINÁMICO (Aquí irá el index, carrito, etc.)
-         ========================================== -->
+    <!-- CONTENIDO DINÁMICO (Aquí irá el index, carrito, etc.) -->
     <main>
         {% block content %}
         <!-- El contenido de cada página se inyectará aquí -->
         {% endblock %}
     </main>
 
-    <!-- ==========================================
-         FOOTER GLOBAL
-    ========================================== -->
+    <!-- FOOTER GLOBAL -->
     <footer class="site-footer">
         <div class="footer-container">
             

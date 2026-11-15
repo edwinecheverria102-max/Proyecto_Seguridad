@@ -1,0 +1,167 @@
+/* =========================================
+   MIS DESCARGAS
+   ========================================= */
+.downloads-container {
+    padding: 60px 5%;
+    max-width: 1000px;
+    margin: 0 auto;
+    min-height: 70vh;
+}
+
+.downloads-container h2 {
+    font-size: 28px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.downloads-subtitle {
+    color: #666;
+    margin-bottom: 40px;
+    font-size: 15px;
+}
+
+/* Lista de descargas */
+.downloads-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.download-card {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 20px;
+    transition: box-shadow 0.3s;
+}
+
+.download-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.download-image {
+    width: 80px;
+    height: 110px;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 25px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.download-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.download-info {
+    flex: 1;
+}
+
+.download-info h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #111;
+}
+
+.download-meta {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 10px;
+}
+.downloand-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+/* Etiqueta de seguridad (Fingerprint) */
+.fingerprint-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.downloand-icon{
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+/* Boton de descarga */
+.download-action {
+    margin-left: 20px;
+}
+
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #000;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background 0.3s;
+}
+
+.btn-download:hover {
+    background-color: #333;
+}
+
+/* Estado vacio */
+.empty-downloads {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: #fafafa;
+    border-radius: 8px;
+}
+
+.empty-downloads h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.empty-downloads p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .download-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .download-image {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    .download-action {
+        margin-left: 0;
+        margin-top: 20px;
+        width: 100%;
+    }
+    .btn-download {
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -74,3 +74,18 @@ def register_view(request):
             return render(request, "core/register.html", {"error": f"Error al registrar: {e}"})
             
     return render(request, 'core/register.html')
+
+# def product(request):
+   # return render(request, 'core/product.html') 
+
+def cart_view(request):
+    return render(request, 'core/cart.html')
+
+def checkout_view(request):
+    return render(request, 'core/checkout.html')
+
+def receipt_view(request):
+    return render(request, 'core/receipt.html')
+
+def download_view(request):
+    return render(request, 'core/download.html')
