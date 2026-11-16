@@ -1,0 +1,49 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Mis Descargas | BookOne{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/download.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="downloads-container">
+    <h2>Mis Descargas</h2>
+    <p class="downloads-subtitle">Aquí puedes acceder a todos los archivos digitales que has adquirido.</p>
+
+    <div class="downloads-list">
+        
+        <!-- Archivo 1 -->
+        <div class="download-card">
+            <div class="download-image">
+                <img src="{% static 'img/fundamentos-py.jpg' %}" alt="Manual Python">
+            </div>
+            <div class="download-info">
+                <h3>Manual de Python Avanzado</h3>
+                <p class="download-meta">Orden: #ORD-2026-0045 | Comprado el: 14 Nov 2026 | Formato: PDF</p>
+                <span class="fingerprint-badge">Copia personalizada (Fingerprint activo)</span>
+            </div>
+            <div class="download-action">
+                <a href="#" class="btn-download">Descargar</a>
+            </div>
+        </div>
+
+        <!-- Archivo 2 -->
+        <div class="download-card">
+            <div class="download-image">
+                <img src="{% static 'img/redes-info.jpg' %}" alt="Apuntes Redes">
+            </div>
+            <div class="download-info">
+                <h3>Apuntes de Redes</h3>
+                <p class="download-meta">Orden: #ORD-2026-0045 | Comprado el: 14 Nov 2026 | Formato: PDF / ZIP</p>
+                <span class="fingerprint-badge">Copia personalizada (Fingerprint activo)</span>
+            </div>
+            <div class="download-action">
+                <a href="#" class="btn-download">Descargar</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

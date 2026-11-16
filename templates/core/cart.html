@@ -1,0 +1,74 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Tu Carrito | BookOne{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="cart-container">
+    <h2>Tu Carrito de Compras</h2>
+
+    <div class="cart-content">
+        <!-- COLUMNA IZQUIERDA: PRODUCTOS -->
+        <div class="cart-items">
+            
+            <!-- Producto 1 -->
+            <div class="cart-item">
+                <div class="cart-item-image">
+                    <img src="{% static 'img/ebook.jpg' %}" alt="Libro">
+                </div>
+                <div class="cart-item-details">
+                    <h4 class="cart-item-title">Manual de Python Avanzado</h4>
+                    <p class="cart-item-format">Formato: PDF / EPUB</p>
+                </div>
+                <div class="cart-item-price">$25.00</div>
+                <!-- cambio aun input funcional -->
+                <input type="number" class="cart-item-qty" value="1" min="1">
+                <button class="btn-remove">Eliminar</button>
+            </div>
+
+            <!-- Producto 2 -->
+            <div class="cart-item">
+                <div class="cart-item-image">
+                    <img src="{% static 'img/redes-info.jpg' %}" alt="Libro">
+                </div>
+                <div class="cart-item-details">
+                    <h4 class="cart-item-title">Apuntes de Redes</h4>
+                    <p class="cart-item-format">Formato: PDF / ZIP</p>
+                </div>
+                <div class="cart-item-price">$10.00</div>
+                <input type="number" class="cart-item-qty" value="1" min="1">
+                <button class="btn-remove">Eliminar</button>
+            </div>
+
+        </div>
+
+        <!-- COLUMNA DERECHA: RESUMEN -->
+        <div class="cart-summary">
+            <h3>Resumen de la Orden</h3>
+            
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span>$35.00</span>
+            </div>
+            <div class="summary-row">
+                <span>Impuestos</span>
+                <span>Calculados en el pago</span>
+            </div>
+            
+            <div class="summary-total">
+                <span>Total</span>
+                <span>$35.00 USD</span>
+            </div>
+
+            <!-- Este botón llevará a la pasarela de pago -->
+            <a href="#">
+                <button class="btn-checkout">Proceder al Pago</button>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Comprobante de Pago | BookOne{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/receipt.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="receipt-container">
+    
+    <!-- banner  -->
+    <div class="success-banner">
+        <h2>¡Pago Exitoso!</h2>
+        <p>Tu compra ha sido procesada correctamente.</p>
+    </div>
+
+    <!-- Tarjeta del Comprobante -->
+    <div class="receipt-card">
+        <div class="receipt-header">
+            <h3>BookOne</h3>
+            <p>Comprobante de Pago Digital</p>
+        </div>
+
+        <!--backend-->
+        <div class="receipt-details">
+            <div><strong>Número de Orden:</strong><br> #ORD-2026-0045</div>
+            <div><strong>Fecha:</strong><br> 14 de Noviembre, 2026</div>
+            <div><strong>Cliente:</strong><br> Ana López</div>
+            <div><strong>Ref. Transacción:</strong><br> TXN-987654321</div>
+        </div>
+
+        <div class="receipt-items">
+            <div class="receipt-item">
+                <span>Manual de Python Avanzado (PDF)</span>
+                <span>$25.00</span>
+            </div>
+            <div class="receipt-item">
+                <span>Apuntes de Redes (PDF)</span>
+                <span>$10.00</span>
+            </div>
+        </div>
+
+        <div class="receipt-total">
+            <span>Total Pagado</span>
+            <span>$35.00 USD</span>
+        </div>
+
+        <!-- Sección de Seguridad: Firma Digital -->
+        <div class="signature-section">
+            <img src="{% static 'icons/cerradura.svg' %}" alt="protegido" class="security-icon">
+            <p>Este documento está protegido con una firma digital criptográfica.</p>
+            <!-- Este botón  se conectará con el backend para verificar la firma -->
+            <button class="btn-verify" onclick="alert('Verificando firma criptográfica con la clave pública...\n\n✅ FIRMA VÁLIDA: El documento no ha sido alterado.')">
+                Verificar Firma Digital
+            </button>
+        </div>
+    </div>
+
+    <!-- Botones de Acción / descargas -->
+    <div class="receipt-actions">
+        <a href="/download/" class="btn-action">Ir a Mis Descargas</a>
+        <a href="/" class="btn-action secondary">Volver al Catálogo</a>
+    </div>
+
+</div>
+{% endblock %}

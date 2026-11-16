@@ -1,0 +1,84 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Pago Simulado | BookOne{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+    <!-- reutiliz los estilos de auth -->
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="checkout-container">
+    <h2>Finalizar Compra</h2>
+
+    <div class="checkout-content">
+        <!-- COLUMNA IZQUIERDA: FORMULARIO -->
+        <div class="checkout-form-section">
+            
+            <h3>Método de Pago</h3>
+            <div class="payment-methods">
+                <div class="payment-method active">
+                    <img src="{% static "icons/tarjeta.svg" %}" alt="Tarjeta" class="payment-icon">
+                    Tarjeta 
+                </div>
+                <div class="payment-method">
+                    <img src="{% static "icons/paypal.svg" %}" alt="PayPal" class="payment-icon">
+                    PayPal 
+                </div>
+            </div>
+
+            <form method="POST" action="">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label>Nombre en la tarjeta</label>
+                    <input type="text" placeholder="Ej. Ana López" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Número de tarjeta (0000 0000 0000 0000)</label>
+                    <input type="text" placeholder="0000 0000 0000 0000" maxlength="19" required>
+                </div>
+
+                <div style="display: flex; gap: 15px;">
+                    <div class="form-group" style="flex: 1;">
+                        <label>Fecha Exp. (MM/YY)</label>
+                        <input type="text" placeholder="12/26" maxlength="5" required>
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>CVV (000)</label>
+                        <input type="text" placeholder="123" maxlength="3" required>
+                    </div>
+                </div>
+
+                <a href="/receipt/">
+                    <button type="submit" class="btn-submit" style="margin-top: 20px;">
+                         Pagar $350.00 USD y Generar Comprobante
+                    </button>
+                </a>
+            </form>
+        </div>
+
+        <!-- COLUMNA DERECHA: RESUMEN -->
+        <div class="checkout-summary">
+            <h3>Resumen de Compra</h3>
+            
+            <div class="checkout-item">
+                <span>Manual de Python (x1)</span>
+                <span>$25.00</span>
+            </div>
+            <div class="checkout-item">
+                <span>Apuntes de Redes (x1)</span>
+                <span>$10.00</span>
+            </div>
+            
+            <div class="summary-total" style="margin-top: 20px; padding-top: 20px; border-top: 2px solid #000; display: flex; justify-content: space-between; font-weight: bold;">
+                <span>Total</span>
+                <span>$35.00 MXM</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

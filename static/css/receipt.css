@@ -1,0 +1,179 @@
+/* =========================================
+   COMPROBANTE / RECEIPT
+   ========================================= */
+.receipt-container {
+    padding: 60px 20px;
+    background-color: #f4f4f4;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.success-banner {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.success-banner h2 {
+    color: #2e7d32;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.success-banner p {
+    color: #666;
+    font-size: 16px;
+}
+
+.receipt-card {
+    background-color: #fff;
+    width: 100%;
+    max-width: 600px;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+/* Efecto de borde punteado tipo ticket */
+.receipt-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: repeating-linear-gradient(45deg, #000, #000 10px, #fff 10px, #fff 20px);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.receipt-header {
+    text-align: center;
+    border-bottom: 2px dashed #eee;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.receipt-header h3 {
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.receipt-header p {
+    font-size: 14px;
+    color: #888;
+}
+
+.receipt-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.receipt-details div {
+    color: #555;
+}
+
+.receipt-details strong {
+    color: #000;
+}
+
+.receipt-items {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+.receipt-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.receipt-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* Sección de Firma Digital */
+.security-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.signature-section {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.signature-section p {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.btn-verify {
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #000;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.btn-verify:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.receipt-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.btn-action {
+    flex: 1;
+    padding: 15px;
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-action:hover {
+    background-color: #333;
+}
+
+.btn-action.secondary {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ddd;
+}
+
+.btn-action.secondary:hover {
+    background-color: #f4f4f4;
+}
