@@ -4,48 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnExplorar = document.querySelector(".btn-primary");
     const seccionProductos = document.querySelector(".latest-collection");
 
-    btnExplorar.addEventListener("click", (e) => {
-        e.preventDefault(); // el enlace no vuelve a recargar la pagina
-        seccionProductos.scrollIntoView({ behavior: "smooth" });
-    });
-
-    // carrito   
-        const iconoCarrito = document.querySelector(".nav-icons span:last-child .icon");
-
-        // evitar que se creen multiples toasts si el usuario hace clic muy rápido
-        let toastActivo = null;
-
-        iconoCarrito.addEventListener("click", () => {
-            // si hay un toast en pantalla, lo eliminamos para reiniciar la animacion
-            if (toastActivo) {
-                toastActivo.remove();
-            }
-
-     
-        const toast = document.createElement("div");
-        toast.className = "toast"; 
-        toast.innerText = "Tu carrito está vacío. ¡Explora el catálogo!";
-
-        document.body.appendChild(toast);
-        toastActivo = toast;
-
-        // delay para el registro del elemento 
-        setTimeout(() => {
-            toast.classList.add("show");
-        }, 10);
-
-        // logica para ocultarlo 
-        setTimeout(() => {
-            toast.classList.remove("show"); // quita la clase y hace la transicion inversa
-            
-            // espera a que termine la transición para borrarlo del html
-            setTimeout(() => {
-                toast.remove();
-                toastActivo = null;
-            }, 300);
-            
-        }, 3000);
-    });
+    if (btnExplorar && seccionProductos) {
+        btnExplorar.addEventListener("click", (e) => {
+            e.preventDefault();
+            seccionProductos.scrollIntoView({ behavior: "smooth" });
+        });
+    }
 
     // menu responsivo
     const nav = document.querySelector("nav");

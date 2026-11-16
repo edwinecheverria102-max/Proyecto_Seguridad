@@ -14,36 +14,29 @@
     <div class="cart-content">
         <!-- COLUMNA IZQUIERDA: PRODUCTOS -->
         <div class="cart-items">
-            
-            <!-- Producto 1 -->
-            <div class="cart-item">
-                <div class="cart-item-image">
-                    <img src="{% static 'img/ebook.jpg' %}" alt="Libro">
+            {% for item in items %}
+                <div class="cart-item">
+                    <div class="cart-item-image">
+                        <img src="{% static 'img/ebook.jpg' %}" alt="{{ item.producto.nombre }}">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4 class="cart-item-title">{{ item.producto.nombre }}</h4>
+                        <p class="cart-item-format">{{ item.producto.descripcion }}</p>
+                    </div>
+                    <div class="cart-item-price">${{ item.subtotal|floatformat:2 }}</div>
+                    <form method="post" action="{% url 'core:cart_update' item.id %}">
+                        {% csrf_token %}
+                        <input type="number" class="cart-item-qty" name="cantidad" value="{{ item.cantidad }}" min="1" required>
+                        <button type="submit">Actualizar</button>
+                    </form>
+                    <form method="post" action="{% url 'core:cart_remove' item.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-remove">Eliminar</button>
+                    </form>
                 </div>
-                <div class="cart-item-details">
-                    <h4 class="cart-item-title">Manual de Python Avanzado</h4>
-                    <p class="cart-item-format">Formato: PDF / EPUB</p>
-                </div>
-                <div class="cart-item-price">$25.00</div>
-                <!-- cambio aun input funcional -->
-                <input type="number" class="cart-item-qty" value="1" min="1">
-                <button class="btn-remove">Eliminar</button>
-            </div>
-
-            <!-- Producto 2 -->
-            <div class="cart-item">
-                <div class="cart-item-image">
-                    <img src="{% static 'img/redes-info.jpg' %}" alt="Libro">
-                </div>
-                <div class="cart-item-details">
-                    <h4 class="cart-item-title">Apuntes de Redes</h4>
-                    <p class="cart-item-format">Formato: PDF / ZIP</p>
-                </div>
-                <div class="cart-item-price">$10.00</div>
-                <input type="number" class="cart-item-qty" value="1" min="1">
-                <button class="btn-remove">Eliminar</button>
-            </div>
-
+            {% empty %}
+                <p>Tu carrito está vacío.</p>
+            {% endfor %}
         </div>
 
         <!-- COLUMNA DERECHA: RESUMEN -->
@@ -52,7 +45,7 @@
             
             <div class="summary-row">
                 <span>Subtotal</span>
-                <span>$35.00</span>
+                <span>${{ total|floatformat:2 }}</span>
             </div>
             <div class="summary-row">
                 <span>Impuestos</span>
@@ -61,12 +54,12 @@
             
             <div class="summary-total">
                 <span>Total</span>
-                <span>$35.00 USD</span>
+                <span>${{ total|floatformat:2 }} USD</span>
             </div>
 
             <!-- Este botón llevará a la pasarela de pago -->
-            <a href="#">
-                <button class="btn-checkout">Proceder al Pago</button>
+            <a href="{% url 'core:checkout' %}" class="btn-checkout">
+                Proceder al Pago
             </a>
         </div>
     </div>

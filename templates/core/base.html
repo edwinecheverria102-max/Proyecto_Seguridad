@@ -38,7 +38,9 @@
             <!-- logica de django, Si el usuario esta logueado -->
             {% if user.is_authenticated %}
                 <span><img src="{% static 'icons/usuario.svg' %}" class="icon" alt="Usuario"></span>
-                <span><img src="{% static 'icons/carrito-de-compras.svg' %}" class="icon" alt="Carrito"></span>
+                <a href="{% url 'core:cart' %}" aria-label="Ver carrito">
+                    <img src="{% static 'icons/carrito-de-compras.svg' %}" class="icon" alt="Carrito">
+                </a>
                 <a href="{% url 'core:logout' %}" class="btn-logout">Salir</a>
             {% else %}
                 <!-- Si no, Mostrar Login/Registro -->

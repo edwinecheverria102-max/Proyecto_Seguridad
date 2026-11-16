@@ -2,7 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.auth import get_user_model, login, logout
 from django.db import IntegrityError
-from .models import Usuario
+from django.db.models import F
+from django.http import HttpResponseBadRequest
+from django.shortcuts import get_object_or_404
+from django.views.decorators.http import require_POST
+from .models import ItemCarrito, Producto, Usuario
 
 User = get_user_model()
 
@@ -21,12 +25,14 @@ def login_view(request):
         auth_user = User.objects.filter(email__iexact=email).first()
         if auth_user and auth_user.check_password(password):
             login(request, auth_user)
+            request.session.pop("cart_user_id", None)
             request.session["user_id"] = auth_user.id
             request.session["user_name"] = auth_user.get_full_name() or auth_user.username
             return redirect("core:index")
 
         usuario = Usuario.objects.filter(email__iexact=email).first()
         if usuario and check_password(password, usuario.password_hash):
+            request.session["cart_user_id"] = usuario.id
             request.session["user_id"] = usuario.id
             request.session["user_name"] = usuario.nombre
             return redirect("core:index")
@@ -79,7 +85,67 @@ def register_view(request):
    # return render(request, 'core/product.html') 
 
 def cart_view(request):
-    return render(request, 'core/cart.html')
+    usuario = _cart_usuario(request)
+    if usuario is None:
+        return redirect("core:login")
+
+    items = ItemCarrito.objects.filter(usuario=usuario).select_related("producto")
+    total = sum((item.subtotal for item in items), start=0)
+    return render(request, "core/cart.html", {"items": items, "total": total})
+
+
+def _cart_usuario(request):
+    usuario_id = request.session.get("cart_user_id")
+    if usuario_id is None:
+        return None
+    return Usuario.objects.filter(pk=usuario_id).first()
+
+
+@require_POST
+def cart_add(request, producto_id):
+    usuario = _cart_usuario(request)
+    if usuario is None:
+        return redirect("core:login")
+
+    producto = get_object_or_404(Producto, pk=producto_id)
+    item, created = ItemCarrito.objects.get_or_create(
+        usuario=usuario,
+        producto=producto,
+        defaults={"cantidad": 1},
+    )
+    if not created:
+        ItemCarrito.objects.filter(pk=item.pk).update(cantidad=F("cantidad") + 1)
+    return redirect("core:cart")
+
+
+@require_POST
+def cart_update(request, item_id):
+    usuario = _cart_usuario(request)
+    if usuario is None:
+        return redirect("core:login")
+
+    try:
+        cantidad = int(request.POST.get("cantidad", ""))
+    except ValueError:
+        return HttpResponseBadRequest("La cantidad debe ser un número entero positivo.")
+    if cantidad < 1:
+        return HttpResponseBadRequest("La cantidad debe ser un número entero positivo.")
+
+    item = get_object_or_404(ItemCarrito, pk=item_id, usuario=usuario)
+    item.cantidad = cantidad
+    item.save(update_fields=["cantidad"])
+    return redirect("core:cart")
+
+
+@require_POST
+def cart_remove(request, item_id):
+    usuario = _cart_usuario(request)
+    if usuario is None:
+        return redirect("core:login")
+
+    item = get_object_or_404(ItemCarrito, pk=item_id, usuario=usuario)
+    item.delete()
+    return redirect("core:cart")
 
 def checkout_view(request):
     return render(request, 'core/checkout.html')

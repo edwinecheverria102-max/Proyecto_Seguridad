@@ -1,4 +1,5 @@
 from django.db import models
+from decimal import Decimal
 
 
 class Usuario(models.Model):
@@ -67,6 +68,30 @@ class OrderItem(models.Model):
     class Meta:
         db_table = 'ORDER_ITEMS'
 
+class ItemCarrito(models.Model):
+    usuario = models.ForeignKey(
+        "Usuario",
+        on_delete=models.CASCADE,
+        related_name="items_carrito",
+    )
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField(default=1)
+    agregado_en = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["usuario", "producto"],
+                name="unique_producto_por_usuario_carrito",
+            )
+        ]
+
+    @property
+    def subtotal(self) -> Decimal:
+        return self.producto.precio * self.cantidad
+
+    def __str__(self):
+        return f"{self.usuario} - {self.producto.nombre} ({self.cantidad})"
 
 class Download(models.Model):
     usuario = models.ForeignKey('Usuario', on_delete=models.CASCADE, db_column='usuario_id', related_name='downloads')
