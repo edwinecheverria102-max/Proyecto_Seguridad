@@ -16,6 +16,7 @@ def login_view(request):
         password = request.POST.get("password")
 
         if not email or not password:
+            print("Login fallido: faltan campos obligatorios.")
             return render(request, "core/login.html", {"error": "Completa todos los campos."})
 
         auth_user = User.objects.filter(email__iexact=email).first()
@@ -23,14 +24,17 @@ def login_view(request):
             login(request, auth_user)
             request.session["user_id"] = auth_user.id
             request.session["user_name"] = auth_user.get_full_name() or auth_user.username
+            print("Login exitoso.")
             return redirect("core:index")
 
         usuario = Usuario.objects.filter(email__iexact=email).first()
         if usuario and check_password(password, usuario.password_hash):
             request.session["user_id"] = usuario.id
             request.session["user_name"] = usuario.nombre
+            print("Login exitoso.")
             return redirect("core:index")
 
+        print("Login fallido: correo o contraseña incorrectos.")
         return render(request, "core/login.html", {"error": "Correo o contraseña incorrectos."})
 
     return render(request, "core/login.html")
@@ -49,12 +53,15 @@ def register_view(request):
         password2 = request.POST.get("password2")
 
         if not name or not email or not password1 or not password2:
+            print("Registro fallido: faltan campos obligatorios.")
             return render(request, "core/register.html", {"error": "Completa todos los campos."})
 
         if password1 != password2:
+            print("Registro fallido: las contraseñas no coinciden.")
             return render(request, "core/register.html", {"error": "Las contraseñas no coinciden."})
 
         if Usuario.objects.filter(email=email).exists():
+            print("Registro fallido: el correo ya está registrado.")
             return render(request, "core/register.html", {"error": "Este correo ya está registrado."})
 
         try:
@@ -66,7 +73,7 @@ def register_view(request):
                 rol="usuario",
                 status="activo"
             )
-            
+            print("Registro exitoso.")
             return redirect("core:login")
         except Exception as e:
             # Para tu flujo de trabajo en la terminal, imprime el error para ver la traza exacta
