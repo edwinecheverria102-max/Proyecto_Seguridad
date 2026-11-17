@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Página no encontrada | BookOne{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/error.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="error-container">
+    <div class="error-code">403</div>
+    <h2 class="error-message">No tienes permisos para estara aquí.</h2>
+    <a href="/" class="btn btn-primary">Volver a la Biblioteca</a>
+</div>
+{% endblock %}

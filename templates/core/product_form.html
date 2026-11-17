@@ -1,0 +1,54 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Nuevo Producto | BookOne{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-main" style="max-width: 800px; margin: 0 auto; padding: 40px 20px;">
+    <div class="dashboard-header">
+        <h2>Registrar Nuevo Producto</h2>
+        <a href="/operator/" class="btn-action-table btn-edit">Volver al Panel</a>
+    </div>
+    
+    <div class="table-container">
+        <!-- Enctype es OBLIGATORIO para subir archivos -->
+        <form method="POST" enctype="multipart/form-data" action="">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label>Nombre del Libro / Producto</label>
+                <input type="text" placeholder="Ej. Manual de Django" required>
+            </div>
+
+            <div class="form-group">
+                <label>Precio (USD)</label>
+                <input type="number" step="0.01" placeholder="15.00" required>
+            </div>
+
+            <div class="form-group">
+                <label>Descripción / Sinopsis</label>
+                <textarea rows="4" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;" placeholder="De qué trata el libro..." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Portada del Libro (Imagen)</label>
+                <input type="file" accept="image/*" required>
+            </div>
+
+            <div class="form-group">
+                <label>Archivo Digital (PDF, EPUB, ZIP)</label>
+                <input type="file" required>
+            </div>
+
+            <button type="submit" class="btn-submit" style="width: auto; padding: 12px 30px;">
+                Guardar Producto
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

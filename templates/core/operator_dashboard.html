@@ -1,0 +1,69 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Panel Operador | BookOne{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-wrapper">
+    <!-- Menú Lateral -->
+    <aside class="dashboard-sidebar">
+        <h3>Operador</h3>
+        <ul>
+            <li><a href="#" class="active">Órdenes de Compra</a></li>
+            <li><a href="#">Catálogo de Productos</a></li>
+        </ul>
+    </aside>
+
+    <!-- Contenido Principal -->
+    <main class="dashboard-main">
+        <div class="dashboard-header">
+            <h2>Gestión de Órdenes</h2>
+            <a href="{% url 'product_form' %}" class="btn-new" style="text-decoration: none;">
+                + Nuevo Producto
+            </a>
+        </div>
+
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID Orden</th>
+                        <th>Cliente</th>
+                        <th>Fecha</th>
+                        <th>Total</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- fila de prueba - backend  un *corchete/porcentaje* for order in orders *corchete/porcentaje* -->
+                    <tr>
+                        <td>#ORD-001</td>
+                        <td>Ana López</td>
+                        <td>15 Nov 2026</td>
+                        <td>$35.00</td>
+                        <td><span class="badge badge-warning">Pendiente</span></td>
+                        <td>
+                            <button class="btn-action-table btn-edit">Actualizar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#ORD-002</td>
+                        <td>Carlos Pérez</td>
+                        <td>15 Nov 2026</td>
+                        <td>$15.00</td>
+                        <td><span class="badge badge-success">Pagado</span></td>
+                        <td>
+                            <button class="btn-action-table btn-edit">Actualizar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
+{% endblock %}

@@ -37,7 +37,9 @@
             
             <!-- logica de django, Si el usuario esta logueado -->
             {% if user.is_authenticated %}
-                <span><img src="{% static 'icons/usuario.svg' %}" class="icon" alt="Usuario"></span>
+                <a href='profalie'>
+                    <span><img src="{% static 'icons/usuario.svg' %}" class="icon" alt="Usuario"></span>
+                </a>
                 <span><img src="{% static 'icons/carrito-de-compras.svg' %}" class="icon" alt="Carrito"></span>
                 <a href="{% url 'core:logout' %}" class="btn-logout">Salir</a>
             {% else %}
@@ -106,7 +108,7 @@
     </footer>
 
     <!-- Tu JavaScript global -->
-    <script src="{% static 'app.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
     
     <!-- Bloque para JS extra (por si una página específica necesita scripts únicos) -->
     {% block extra_js %}{% endblock %}
