@@ -11,7 +11,12 @@ from .models import ItemCarrito, Producto, Usuario
 User = get_user_model()
 
 def index(request):
-    return render(request, 'core/index.html')
+    # Simulacion dela Base de Datos
+    productos_falsos = [
+        {'id': 1, 'nombre': 'Manual Python Avanzado', 'precio': 25.00, 'formato': 'PDF', 'imagen': 'img/ebook.jpg'},
+        {'id': 2, 'nombre': 'Apuntes de Redes', 'precio': 10.00, 'formato': 'PDF/ZIP', 'imagen': 'img/redes-info.jpg'},
+    ]
+    return render(request, 'core/index.html', {'productos': productos_falsos})
 
 # creado para la visualizacion del diseño login/register
 def login_view(request):
@@ -88,8 +93,10 @@ def register_view(request):
             
     return render(request, 'core/register.html')
 
-# def product(request):
-   # return render(request, 'core/product.html') 
+def product_detail_view(request, pk):
+    # backend busca el producto en la base de datos con ese 'pk'
+    # producto = Product.objects.get(id=pk)
+    return render(request, 'core/product.html')
 
 def cart_view(request):
     usuario = _cart_usuario(request)
@@ -162,3 +169,15 @@ def receipt_view(request):
 
 def download_view(request):
     return render(request, 'core/download.html')
+
+def profile_view(request):
+    return render(request, 'core/profile.html')
+
+def operator_dashboard_view(request):
+    return render(request, 'core/operator_dashboard.html')
+
+def admin_dashboard_view(request):
+    return render(request, 'core/admin_dashboard.html')
+
+def product_form_view(request):
+    return render(request, 'core/product_form.html')

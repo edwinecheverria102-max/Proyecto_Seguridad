@@ -1,0 +1,63 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Panel Administrador | BookOne{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-wrapper">
+    <aside class="dashboard-sidebar">
+        <h3>Administrador</h3>
+        <ul>
+            <li><a href="#" class="active">Usuarios</a></li>
+            <li><a href="#">Eventos de Seguridad</a></li>
+        </ul>
+    </aside>
+
+    <main class="dashboard-main">
+        <div class="dashboard-header">
+            <h2>Gestión de Usuarios</h2>
+        </div>
+
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Email</th>
+                        <th>Rol</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- fila de prueba - backend *corchete/porcentaje* for user in users *corchete/porcentaje* -->
+                    <tr>
+                        <td>Ana López</td>
+                        <td>ana@correo.com</td>
+                        <td><span class="badge badge-success">Cliente</span></td>
+                        <td>Activo</td>
+                        <td>
+                            <button class="btn-action-table btn-edit">Cambiar Rol</button>
+                            <button class="btn-action-table btn-delete">Desactivar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Edwin Daniel</td>
+                        <td>edwin@correo.com</td>
+                        <td><span class="badge badge-warning">Operador</span></td>
+                        <td>Activo</td>
+                        <td>
+                            <button class="btn-action-table btn-edit">Cambiar Rol</button>
+                            <button class="btn-action-table btn-delete">Desactivar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
+{% endblock %}

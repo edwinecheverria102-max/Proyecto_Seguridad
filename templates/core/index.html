@@ -57,49 +57,22 @@
     <section class="latest-collection">
         <h2>Últimos Lanzamientos</h2>
         <div class="product-grid">
-            <!-- Producto 1 -->
+        {% for producto in productos %}
+            <!-- Cambia el tag de Django por la URL directa -->
+            <a href="/product/{{ producto.id }}/" style="text-decoration: none; color: inherit;">
             <div class="product-card">
                 <div class="product-image-container">
-                    <img src="{% static 'img/redes-info.jpg' %}" alt="Portada Libro">
+                    <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
                 </div>
-                <h3 class="product-title">Redes Informaticas</h3>
-                <p class="product-price">$200 MXM</p>
-                <p class="product-format">Formato PDF / EPUB</p>
+                <h3 class="product-title">{{ producto.nombre }}</h3>
+                <p class="product-price">${{ producto.precio }} USD</p>
+                <p class="product-format">Formato: {{ producto.formato }}</p>
             </div>
-            
-            <!-- Producto 2 -->
-            <a href="/product-detail/" styles="text-decoration": none; color: inherit;>
-                <div class="product-card">
-                    <div class="product-image-container">
-                        <img src="{% static 'img/fundamentos-py.jpg' %}" alt="Portada Libro">
-                    </div>
-                    <h3 class="product-title">Fundamentals of Python : Data Structures</h3>
-                    <p class="product-price">$450 MXM</p>
-                    <p class="product-format">Formato PDF</p>
-                </div>
-            </a>
-        
-
-            <!-- Producto 3 -->
-            <div class="product-card">
-                <div class="product-image-container">
-                    <img src="{% static 'img/apuntes-info.jpg' %}" alt="Portada Libro">
-                </div>
-                <h3 class="product-title">Apuntes de Informatica</h3>
-                <p class="product-price">$100.00 MXM</p>
-                <p class="product-format">Formato PDF </p>
-            </div>
-
-            <!-- Producto 4 -->
-            <div class="product-card">
-                <div class="product-image-container">
-                    <img src="{% static 'img/arq-soft.jpg' %}" alt="Portada Libro">
-                </div>
-                <h3 class="product-title">Introducción a la Arquitectura de Software un Enfoque Práctico</h3>
-                <p class="product-price">$500.00 MXM</p>
-                <p class="product-format">Formato EPUB</p>
-            </div>
-        </div>
-    </section>
-
+        </a>
+        {% empty %}
+            <p style="text-align: center; width: 100%; grid-column: 1 / -1; color: #888;">
+                No hay productos disponibles por el momento.
+            </p>
+        {% endfor %}
+    </div>
 {% endblock %}
